@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <SupportedOSPlatformVersion>6.1</SupportedOSPlatformVersion>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="SharpShell" Version="2.7.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Forms\OpenAIForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\StartupForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\Assets\AIAssistant.ico">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="C:\Projects\AiAssistant\AIAssistant\ContextMenu\bin\Release\net48\win-x64\ContextMenu.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>ContextMenu.dll</Link>
+        </Content>
+        <None Include="C:\Projects\AiAssistant\AIAssistant\AIAssistant\bin\Release\net9.0-windows\publish\SharpShell.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>SharpShell.dll</Link>
+        </None>
+    </ItemGroup>
+
+
+</Project>
