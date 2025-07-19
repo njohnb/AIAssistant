@@ -39,12 +39,39 @@ static class Program
             Visible = true,
             Text = "AI Assistant"
         };
-        notifyIcon.Click += (s, e) =>
+        
+        var contextMenu = new ContextMenuStrip();
+        var openIdeaToOutline = new ToolStripMenuItem("Open Idea to Outline Generator");
+        
+        openIdeaToOutline.Click += (s, e) =>
         {
             var form = new OpenAIForm();
             form.Show();
         };
         
+        contextMenu.Items.Add(openIdeaToOutline);
+        contextMenu.Items.Add(new ToolStripSeparator());
+       
+        
+        
+       var openTaskSplitter = new ToolStripMenuItem("Open Task Splitter");
+       openTaskSplitter.Click += (s, e) =>
+       {
+           var form = new TaskSplitterForm();
+           form.Show();
+       };
+        
+       contextMenu.Items.Add(openTaskSplitter);
+       contextMenu.Items.Add(new ToolStripSeparator());
+       
+        var exitItem = new ToolStripMenuItem("Close AI Assistant");
+        exitItem.Click += (s, e) =>
+        {
+            notifyIcon.Visible = false;
+            Application.Exit();
+        };
+        contextMenu.Items.Add(exitItem);
+        notifyIcon.ContextMenuStrip = contextMenu;
         
         Application.Run();
     }

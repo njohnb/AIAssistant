@@ -71,7 +71,7 @@ public partial class OpenAIForm : Form
                     textBox_prompt.Text = $"Please analyze and summarize the contents of the following file: \n\"{targetPath}\"";
                     textBox_response.Text = "Thinking...";
                     string prompt = $"Please analyze and summarize the contents of the following file: \n\"{targetPath}\" \n\n{fileContent} \n\n{fileContent.Length}";
-                    string response = await GPTProcessor.CallOpenAiAsync(prompt);
+                    string response = await GPTProcessor.CallOpenAiAsync(prompt, OpenAiMode.AnalyzeFileOrFolder);
                     textBox_response.Text = response;
                     
                 }
@@ -97,7 +97,7 @@ public partial class OpenAIForm : Form
                 textBox_response.Text = "Thinking...";
                 string prompt = $"Please analyze and summarize the contents of the following folder: \n\"{targetPath}\" \n\n{formatted}";
                 // todo: ENSURE CHUNKS ARENT OVER SIZE LIMIT
-                string response = await GPTProcessor.CallOpenAiAsync(prompt);
+                string response = await GPTProcessor.CallOpenAiAsync(prompt, OpenAiMode.AnalyzeFileOrFolder);
                 textBox_response.Text = response;
                 
             }
@@ -152,7 +152,7 @@ public partial class OpenAIForm : Form
         string input = textBox_prompt.Text.Trim();
         if (!string.IsNullOrEmpty(input))
         {
-            string response = await GPTProcessor.CallOpenAiAsync(input, false);
+            string response = await GPTProcessor.CallOpenAiAsync(input, OpenAiMode.IdeaToOutline);
             textBox_response.Text = response;
         }
 

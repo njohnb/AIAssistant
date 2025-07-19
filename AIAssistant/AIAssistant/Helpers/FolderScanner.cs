@@ -193,7 +193,7 @@ namespace AIAssistant
                     else
                     {
                         string prompt = $"Please analyze and summarize the contents of the following file: \n\"{file}\" \n\n{fileContent} \n\n{fileContent.Length}";
-                        string response = await GPTProcessor.CallOpenAiAsync(prompt);
+                        string response = await GPTProcessor.CallOpenAiAsync(prompt, OpenAiMode.AnalyzeFileOrFolder);
                     
                     }
                     
